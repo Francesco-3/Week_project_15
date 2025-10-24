@@ -25,7 +25,7 @@ public class User implements UserDetails {
     @Setter(AccessLevel.NONE)
     private UUID id;
 
-    private String full_name;
+    private String fullName;
 
     @Column(unique = true, nullable = false)
     private String email;

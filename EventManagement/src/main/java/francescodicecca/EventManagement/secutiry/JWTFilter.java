@@ -30,10 +30,10 @@ public class JWTFilter extends OncePerRequestFilter {
         throws ServletException, IOException {
 
         String authHeader = request.getHeader("Authorization");
-        if (authHeader == null || !authHeader.startsWith("Barer"))
+        if (authHeader == null || !authHeader.startsWith("Bearer"))
             throw new UnauthorizedException("Inserire il token nell'autorization header nel formato corrett!");
 
-        String accessToken = authHeader.replace("Barer ", "");
+        String accessToken = authHeader.replace("Bearer ", "");
         jwtTools.verifyToken(accessToken);
 
         UUID userId = jwtTools.extractIdFromToken(accessToken);

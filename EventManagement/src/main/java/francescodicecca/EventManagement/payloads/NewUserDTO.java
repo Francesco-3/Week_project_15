@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Size;
 
 public record NewUserDTO(
         @NotBlank(message = "Il nome è obbligatorio!")
-        @NotBlank(message = "Il nome è obbligatorio!")
         @Size(min = 2, max = 30, message = "Il nome deve avere una lunghezza compresa tra 2 e 30 caratteri")
         String full_name,
 

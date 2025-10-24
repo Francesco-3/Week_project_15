@@ -1,4 +1,4 @@
-package francescodicecca.EventManagement.controller;
+package francescodicecca.EventManagement.controllers;
 
 import francescodicecca.EventManagement.entities.User;
 import francescodicecca.EventManagement.exceptions.ValidationException;
@@ -32,7 +32,7 @@ public class AuthController {
     @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@RequestBody @Validated NewUserDTO payload, BindingResult validationResult) {
         if (validationResult.hasErrors()) {
-            throw new ValidationException(validationResult.getFieldError()
+            throw new ValidationException(validationResult.getFieldErrors()
                     .stream().map(fieldError -> fieldError.getDefaultMessage()).toList());
         }
 
