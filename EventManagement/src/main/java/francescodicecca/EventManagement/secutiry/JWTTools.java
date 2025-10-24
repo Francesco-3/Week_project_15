@@ -7,10 +7,11 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.Value;
 import java.util.Date;
+import java.util.UUID;
 
 @Component
 public class JWTTools {
-   // @Value("${jwt.secret}")
+    @Value("${jwt.secret}")
     private String secret;
 
     public String creteToken(User user) {
@@ -28,5 +29,13 @@ public class JWTTools {
         } catch (Exception ex) {
             throw new UnauthorizedException("Ci sono stati errori nel token! Effettua di nuovo il login!");
         }
+    }
+
+    public UUID extractIdFromToken(String accessToken) {
+        return UUID.fromString(Jwts.parser()
+                .verifyWith(Keys.hmacShaKeyFor(secret.getBytes())).build()
+                .parseSignedClaims(accessToken)
+                .getPayload()
+                .getSubject());
     }
 }

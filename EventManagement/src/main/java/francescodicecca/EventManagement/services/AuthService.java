@@ -3,7 +3,7 @@ package francescodicecca.EventManagement.services;
 import francescodicecca.EventManagement.entities.User;
 import francescodicecca.EventManagement.exceptions.UnauthorizedException;
 import francescodicecca.EventManagement.secutiry.JWTTools;
-//import francescodicecca.EventManagement.payload.LoginDTO;
+import francescodicecca.EventManagement.payload.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class AuthService {
     @Autowired
     private PasswordEncoder bcrypt;
 
-   /* public String checkCredentialsAndGenerateToken(LoginDTO body) {
+   public String checkCredentialsAndGenerateToken(LoginDTO body) {
         User found = this.userService.findByEmail(body.email());
 
         if (bcrypt.matches(body.password(), found.getPassword())) {
@@ -25,5 +25,5 @@ public class AuthService {
         } else {
             throw  new UnauthorizedException("Credenziali errate!");
         }
-    }*/
+   }
 }
